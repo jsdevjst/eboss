@@ -1,0 +1,72 @@
+
+<div class="wrapper">
+    <app-header></app-header>
+    <app-main-side-bar></app-main-side-bar>
+    <div class="content-wrapper">
+        <section class="content-header">
+        </section>
+        <section class="content1">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                        <a _ngcontent-c3=""  (click)="backClicked()"  class="inner_back"><i _ngcontent-c3="" class="fa fa-angle-left"></i>Back</a>
+                    <button class="delbtn" (click)="deletedocument()"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
+                </div>
+                <div class="col-xs-12">
+                    <div class="box box12">
+                        <div class="box-header myhdr">
+                            <h3 class="box-title">Pending Document</h3>
+                        </div>
+                        <div class="box-body table-responsive no-padding mynewtable">
+                            <table class="table table-hover">
+                                <tr class="hdr">
+                                    <th>  <input type="checkbox" name="checked" [checked]="isAllChecked()" (change)="checkAll($event)" ></th>
+                                    <th>Doc#</th>
+                                    <th>Document Name</th>
+                                    <th>Sender</th>
+                                    <th>Exp. Date</th>
+                                    <th>Action</th>
+                                </tr>
+                                <tr *ngFor="let item of pageOfItems" class="unread">
+                                    <!-- {{item |json}} -->
+                                    <td>
+                                 <div class="checkbox">
+                                   <label class="new_checkbox_2">
+                                    
+                                        <input type="checkbox" name="checked" value="{{item._id}}"
+                                        [(ngModel)]="item.selected">
+                                     <span class="checkmark"></span>
+                                   </label>
+                                 </div>
+                               </td>
+                                   <td>{{item._id}}</td>
+                                   <td class="docname" >
+                                    pdf-{{item.documentid}}
+                                   </td>
+                                <td>{{item.sendername}}</td>
+                                   <td *ngIf="item.expiration!=null">{{item.expiration | date: 'dd/MM/yyyy'}}</td>
+                                   <td *ngIf="item.expiration==null">NA</td>
+                                   <td>
+<!-- {{this.digitalpath}} -->
+                                      <a routerLink="/newsign/{{this.digitalpath}}/{{item._id}}/{{item.userid}}/{{item.usertosign}}">
+                                        <img src="assets/img/view.png" class="img-responsive"/>
+                                      </a>
+                                      </td>
+                               </tr>
+                            </table>
+                            <!-- {{items | json}} -->
+                             <!-- <table>
+                            <div *ngFor="let item of pageOfItems">{{item}}</div>
+ </table> -->
+
+                            <jw-pagination [items]="items" [pageSize]=10 (changePage)="onChangePage($event)"></jw-pagination>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <app-footer></app-footer>
+    <div class="control-sidebar-bg"></div>
+</div>
+
+
