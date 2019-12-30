@@ -68,7 +68,7 @@ import { SafePipe } from './safe.pipe';
 import { ConfirmComponent } from './confirm/confirm.component';
 import { LandingComponent } from './landing/landing.component';
 import { NewDocumentComponent } from './new-document/new-document.component';
-
+import { NewsignpdfComponent } from './newsignpdf/newsignpdf.component';
 import { ScrollToModule } from 'ng2-scroll-to-el';
 import { VideorecComponent } from './videorec/videorec.component';
 import { ComposemailComponent } from './composemail/composemail.component';
@@ -156,6 +156,7 @@ const routes: Routes = [
   { path: 'documentdetail/:documentid', component: DocumentdetailComponent },
   { path: 'confirm/:userid', component: ConfirmComponent },
   { path: 'signpdf/:documentid/:userid/:usertosign', component: SignpdfComponent, canActivate: [AuthGuardService] },
+  { path: 'newsign/:type/:documentid/:userid/:usertosign', component: NewsignpdfComponent },
   { path: 'composefiletransfer', component: ComposefiletransferComponent, canActivate: [AuthGuardService] },
   { path: 'dicomviewer/:id', component: DicomviewerComponent },
   { path: 'filetransferread', component: FiletransferreadComponent },
@@ -184,6 +185,7 @@ const routes: Routes = [
     LoginComponent,
     RegisterComponent,
     NewDocumentComponent,
+    NewsignpdfComponent,
     HomeComponent,
     HeaderComponent,
     DigitalSignatureComponent,
